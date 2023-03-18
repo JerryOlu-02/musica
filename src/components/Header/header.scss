@@ -1,0 +1,30 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.header {
+  background-color: $dark-blue;
+  @include flex-row-center;
+  padding: 25px 0;
+  padding-bottom: 40px;
+
+  .header-div {
+    width: 100px;
+    @include flex-row-center;
+    justify-content: center;
+
+    .logo-img {
+      width: 40px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 30px 5%;
+
+    .header-div {
+      justify-content: flex-end;
+      gap: 20px;
+    }
+  }
+}

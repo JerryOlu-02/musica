@@ -1,0 +1,55 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.searchbar {
+  width: 100%;
+  @include flex-row-center;
+  gap: 30px;
+  padding: 0 60px;
+  padding-left: 30px;
+
+  svg {
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.25;
+    font-size: larger;
+  }
+
+  input {
+    background-color: $dark-blue;
+    border: none;
+    width: 50%;
+    height: 2.5rem;
+    font-size: 14px;
+    color: $light;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #fff;
+      opacity: 0.25;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .searchbar {
+    padding: 0 5%;
+    flex-direction: row-reverse;
+
+    svg {
+      font-size: 35px;
+    }
+
+    input {
+      width: 80%;
+      text-align: right;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+}

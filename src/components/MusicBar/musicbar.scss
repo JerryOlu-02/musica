@@ -1,0 +1,254 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.musicbar {
+  @include flex-row-center;
+  gap: 30px;
+  padding: 0 96px;
+  height: 125px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: rgba(29, 33, 35, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
+}
+
+.musicbar-div-one {
+  @include flex-row-center;
+  gap: 20px;
+  color: $light;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 14px;
+  }
+
+  div {
+    line-height: 1.5;
+
+    p:last-of-type {
+      opacity: 0.25;
+      font-size: small;
+    }
+  }
+}
+
+.musicbar-div-two {
+  @include flex-col;
+  width: 70%;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    @include flex-row-center;
+    gap: 40px;
+    font-size: larger;
+    color: $light;
+
+    svg {
+      cursor: pointer;
+    }
+
+    .play-pause {
+      background-color: $secondary;
+      border-radius: 50%;
+      @include flex-row-center;
+      width: 30px;
+      height: 30px;
+      position: relative;
+
+      svg {
+        color: $light;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      svg:last-of-type {
+        opacity: 0;
+      }
+    }
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.musicbar-div-three {
+  @include flex-row-center;
+  gap: 10px;
+
+  svg {
+    color: $light;
+    font-size: larger;
+  }
+
+  input {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-radius: 20px;
+  }
+}
+
+input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 4px;
+  background: transparent;
+  border-radius: 4px;
+  background-image: linear-gradient($secondary, $secondary);
+  background-color: rgba(255, 255, 255, 0.04);
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Input Thumb */
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: $secondary;
+  cursor: pointer;
+
+  outline: 1px solid $light;
+  outline-offset: 0.2rem;
+}
+
+input[type='range']::-moz-range-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: $secondary;
+
+  outline: 1px solid $light;
+  outline-offset: 0.2rem;
+}
+
+input[type='range']::-ms-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: $secondary;
+  cursor: ew-resize;
+
+  outline: 1px solid $light;
+  outline-offset: 0.2rem;
+}
+
+/* Input Track */
+input[type='range']::-webkit-slider-runnable-track {
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+input[type='range']::-moz-range-track {
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+input[type='range']::-ms-track {
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+// VOLUME INPUT
+input[type='range'].volume::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  border-radius: 0;
+  background: $secondary;
+  cursor: pointer;
+
+  outline: none;
+}
+
+input[type='range'].volume::-moz-range-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  border-radius: 0;
+  background: $secondary;
+
+  outline: none;
+}
+
+input[type='range'].volume::-ms-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  border-radius: 0;
+  background: $secondary;
+  cursor: ew-resize;
+
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .musicbar {
+    padding: 0 5%;
+  }
+
+  .musicbar-div-one {
+    width: 70%;
+  }
+
+  .musicbar-div-two {
+    align-items: flex-end;
+    width: 30%;
+
+    div {
+      gap: 20px;
+
+      svg {
+        display: none;
+      }
+
+      .next-btn {
+        display: block;
+      }
+
+      .play-pause {
+        svg {
+          display: block;
+        }
+      }
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  .musicbar-div-three {
+    display: none;
+  }
+}

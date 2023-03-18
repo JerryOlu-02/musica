@@ -1,0 +1,166 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-right: 60px;
+  width: 100%;
+}
+
+.curated-playlists {
+  background-color: $primary-two;
+  border-radius: 40px;
+  display: grid;
+  grid-template-columns: 0.5fr;
+  row-gap: 75px;
+  width: 60%;
+  color: $light;
+  padding: 45px;
+
+  background-image: url('../../images/Man.svg'), url('../../images/Curly.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: 120% 90%;
+  background-size: calc(60%), calc(80%);
+
+  .curated-playlists-div-1 {
+    line-height: 1.5;
+
+    h2 {
+      font-size: 35px;
+    }
+  }
+
+  .curated-playlists-div-2 {
+    @include flex-row-center;
+    gap: 20px;
+  }
+}
+
+.chart-list {
+  width: 40%;
+  @include flex-col;
+  gap: 20px;
+
+  h3 {
+    color: $light;
+    font-size: 24px;
+  }
+
+  .chart-show {
+    @include flex-col;
+    gap: 15px;
+
+    .chart-show-item {
+      @include flex-row-space-between-center;
+      padding: 20px;
+      border-radius: 20px;
+      background-color: $dark-alt;
+
+      .cart-show-item-div {
+        display: flex;
+        gap: 20px;
+        color: $light;
+
+        img {
+          width: 63px;
+          height: 63px;
+        }
+
+        div {
+          line-height: 1.5;
+
+          p:nth-of-type(2) {
+            opacity: 0.25;
+            font-size: small;
+          }
+
+          p:last-of-type {
+            font-size: small;
+          }
+        }
+      }
+
+      .chart-like {
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 50%;
+        padding: 8px;
+        @include flex-row-center;
+
+        svg {
+          color: $secondary;
+          font-size: larger;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .curated-playlists {
+    width: 100%;
+  }
+
+  .chart-list {
+    width: 100%;
+
+    .chart-show {
+      display: grid;
+      grid-template-columns: repeat(3, 50%);
+      overflow-x: scroll;
+      padding-bottom: 15px;
+
+      .chart-show-item {
+        padding: 15px;
+        align-items: flex-start;
+
+        .cart-show-item-div {
+          flex-direction: column;
+
+          div {
+            line-height: 1.5;
+
+            p:last-of-type {
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .chart-show::-webkit-scrollbar {
+      appearance: none;
+      height: 4px;
+      background-color: $light;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .chart-show::-webkit-scrollbar-thumb {
+      cursor: pointer;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background-color: $secondary;
+      border-radius: 4px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 5%;
+
+    .chart-list {
+      .chart-show {
+        grid-template-columns: repeat(3, 90%);
+      }
+    }
+  }
+}

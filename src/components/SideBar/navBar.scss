@@ -1,0 +1,102 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.navbar {
+  @include flex-col;
+  background-color: $dark-blue;
+  padding: 0 25px;
+  gap: 40px;
+  align-items: center;
+
+  .menu-bar {
+    @include flex-col;
+    gap: 8px;
+    display: none;
+    cursor: pointer;
+
+    div {
+      border: 2px;
+      width: 16px;
+      height: 2px;
+      background-color: $light;
+    }
+  }
+
+  .navbar-items {
+    @include flex-col;
+    gap: 20px;
+    width: 52px;
+
+    .navbar-div {
+      @include flex-col;
+      align-items: center;
+      background-color: $dark-alt;
+      gap: 35px;
+      padding: 30px 0;
+      border-radius: 30px;
+
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0 5%;
+    gap: 25px;
+
+    .menu-bar {
+      position: absolute;
+      top: 45px;
+      left: 5%;
+      display: flex;
+    }
+
+    .navbar-items {
+      background-color: $dark-alt;
+      position: fixed;
+      left: 0;
+      top: 0;
+      gap: 0;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 40px;
+      width: 100%;
+
+      transition: transform ease-in-out 0.5s;
+      transform: scaleX(0);
+      transform-origin: left;
+
+      .navbar-div {
+        padding: 0;
+        gap: 50px;
+        border-radius: 0;
+        align-items: flex-start;
+
+        a {
+          display: flex;
+          gap: 30px;
+          text-decoration: none;
+          color: $border-color;
+          font-weight: 700;
+        }
+
+        p {
+          display: block;
+        }
+      }
+
+      .navbar-div:last-of-type {
+        padding-top: 50px;
+      }
+    }
+
+    .navbar-items-active {
+      z-index: 10;
+      transform: scaleX(1);
+    }
+  }
+}

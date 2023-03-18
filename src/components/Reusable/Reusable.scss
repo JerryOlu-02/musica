@@ -1,0 +1,56 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.reusable {
+  @include flex-col;
+  width: 100%;
+  padding: 40px 60px 0 102px;
+  gap: 15px;
+
+  h3 {
+    color: $light;
+    font-size: 24px;
+  }
+}
+
+.reusable-list {
+  display: flex;
+  gap: 30px;
+  overflow-x: scroll;
+  padding-bottom: 15px;
+}
+
+.reusable-list::-webkit-scrollbar {
+  appearance: none;
+  height: 4px;
+  background-color: $light;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.reusable-list::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: $secondary;
+  border-radius: 4px;
+}
+
+.reusable-list-show {
+  @include flex-col;
+  justify-items: flex-start;
+  gap: 10px;
+  color: $light;
+
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .reusable {
+    padding: 40px 5% 0;
+  }
+}
