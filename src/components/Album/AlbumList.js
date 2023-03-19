@@ -1,14 +1,14 @@
 import PlayListImage from '../../images/Lead-image.svg';
 import SongImage from '../../images/Rectangle 14 (1).png';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import './PlayListCard.scss';
-import './PlayList.scss';
-import PlayListCard from './PlayListCard';
+import './AlbumListCard.scss';
+import './AlbumList.scss';
+import AlbumListCard from './AlbumListCard';
 import CollectionImage from '../../images/collection.svg';
 import PlayAllImage from '../../images/playall.svg';
 
-const PlayList = function () {
-  const playList = {
+const AlbumList = function () {
+  const albumList = {
     image: PlayListImage,
     name: `Tommorow's Tunes`,
     description:
@@ -96,21 +96,21 @@ const PlayList = function () {
     ],
   };
 
-  const renderedSongs = playList.songs.map((song, index) => {
-    return <PlayListCard key={index} song={song} />;
+  const renderedSongs = albumList.songs.map((song, index) => {
+    return <AlbumListCard key={index} song={song} />;
   });
 
   return (
-    <div className="play-list-container">
-      <div className="play-list-container-div">
-        <img src={playList.image} alt="playlist__image_alt" />
+    <div className="album-list-container">
+      <div className="album-list-container-div">
+        <img src={albumList.image} alt="albumlist__image_alt" />
 
-        <div className="play-list-container-content">
+        <div className="album-list-container-content">
           <div>
-            <h3>{playList.name}</h3>
-            <p>{playList.description}</p>
+            <h3>{albumList.name}</h3>
+            <p>{albumList.description}</p>
             <p>
-              {playList.songTime} ~ {playList.songsNo}
+              {albumList.songTime} ~ {albumList.songsNo}
             </p>
           </div>
 
@@ -131,9 +131,9 @@ const PlayList = function () {
         </div>
       </div>
 
-      <div className="play-list">{renderedSongs}</div>
+      <div className="album-list">{renderedSongs}</div>
     </div>
   );
 };
 
-export default PlayList;
+export default AlbumList;

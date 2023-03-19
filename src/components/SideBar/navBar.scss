@@ -25,7 +25,7 @@
   .navbar-items {
     @include flex-col;
     gap: 20px;
-    width: 52px;
+    width: 60px;
 
     .navbar-div {
       @include flex-col;

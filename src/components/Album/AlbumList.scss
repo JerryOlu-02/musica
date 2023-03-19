@@ -1,13 +1,13 @@
 @import '../../sass/variables';
 @import '../../sass/mixins';
 
-.play-list-container {
+.album-list-container {
   padding: 0 60px 0 0;
   @include flex-col;
   gap: 60px;
 }
 
-.play-list-container-div {
+.album-list-container-div {
   display: flex;
   gap: 25px;
   color: $light;
@@ -20,7 +20,7 @@
   }
 }
 
-.play-list-container-content {
+.album-list-container-content {
   @include flex-col;
   gap: 40px;
   padding-bottom: 10px;
@@ -87,11 +87,11 @@
 }
 
 @media (max-width: 830px) {
-  .play-list-container {
+  .album-list-container {
     padding: 0 5%;
   }
 
-  .play-list-container-div {
+  .album-list-container-div {
     flex-direction: column;
 
     img {
@@ -101,7 +101,7 @@
     }
   }
 
-  .play-list-container-content {
+  .album-list-container-content {
     gap: 30px;
 
     div:first-of-type {

@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import AlbumPage from './pages/AlbumPage';
+import CollectionPage from './pages/CollectionPage';
 import HomePage from './pages/HomePage';
 
 const App = function () {
@@ -11,6 +12,10 @@ const App = function () {
     {
       path: '/album',
       element: <AlbumPage />,
+    },
+    {
+      path: '/collections',
+      element: <CollectionPage />,
     },
   ]);
 

@@ -18,7 +18,8 @@
 
 .main {
   display: grid;
-  grid-template-columns: 102px calc(100% - 102px);
+  grid-template-columns: 110px calc(100% - 102px);
+  overflow-x: hidden;
 }
 
 .background-album-image {

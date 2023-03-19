@@ -1,12 +1,12 @@
 @import '../../sass/variables';
 @import '../../sass/mixins';
 
-.play-list {
+.album-list {
   @include flex-col;
   gap: 10px;
 }
 
-.play-list-card {
+.album-list-card {
   color: $light;
   width: 100%;
   padding: 10px;
@@ -46,7 +46,7 @@
   }
 }
 
-.play-list-card-div {
+.album-list-card-div {
   display: flex;
   align-items: center;
   gap: 25px;
@@ -63,7 +63,7 @@
 }
 
 @media (max-width: 830px) {
-  .play-list-card {
+  .album-list-card {
     gap: 20px;
 
     div:last-of-type {
@@ -85,7 +85,7 @@
     }
   }
 
-  .play-list-card-div {
+  .album-list-card-div {
     svg {
       display: none;
     }

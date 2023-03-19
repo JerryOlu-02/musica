@@ -1,17 +1,16 @@
 import Header from '../components/Header/Header';
 import NavBar from '../components/SideBar/NavBar';
 import MusicBar from '../components/MusicBar/MusicBar';
-import AlbumList from '../components/Album/AlbumList';
+import CollectionList from '../components/Collections/CollectionList';
 
-const AlbumPage = function () {
+const CollectionPage = function () {
   return (
     <div className="app">
       <Header />
-      <div className="background-album-image"></div>
 
       <div className="main">
         <NavBar />
-        <AlbumList />
+        <CollectionList />
       </div>
 
       <MusicBar />
@@ -19,4 +18,4 @@ const AlbumPage = function () {
   );
 };
 
-export default AlbumPage;
+export default CollectionPage;

@@ -1,11 +1,11 @@
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 
-const PlayListCard = function ({ song }) {
+const AlbumListCard = function ({ song }) {
   return (
-    <div className="play-list-card">
-      <div className="play-list-card-div">
-        <img src={song.image} alt="Playlist__alt" />
+    <div className="album-list-card">
+      <div className="album-list-card-div">
+        <img src={song.image} alt="albumlist__alt" />
         <AiOutlineHeart />
       </div>
 
@@ -27,4 +27,4 @@ const PlayListCard = function ({ song }) {
   );
 };
 
-export default PlayListCard;
+export default AlbumListCard;
