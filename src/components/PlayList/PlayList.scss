@@ -1,0 +1,131 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.play-list-container {
+  padding: 0 60px 0 0;
+  @include flex-col;
+  gap: 60px;
+}
+
+.play-list-container-div {
+  display: flex;
+  gap: 25px;
+  color: $light;
+  align-items: flex-end;
+
+  img {
+    width: 284px;
+    height: 284px;
+    border-radius: 35px;
+  }
+}
+
+.play-list-container-content {
+  @include flex-col;
+  gap: 40px;
+  padding-bottom: 10px;
+
+  div:first-of-type {
+    line-height: 1.2;
+    @include flex-col;
+    gap: 20px;
+
+    h3 {
+      font-size: 35px;
+      color: $primary;
+    }
+
+    p {
+      font-weight: lighter;
+      font-size: medium;
+    }
+  }
+
+  div:nth-of-type(2) {
+    display: flex;
+    gap: 10px;
+
+    button {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(5px);
+      border: none;
+      color: $light;
+      font-weight: lighter;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 10px;
+      height: 36px;
+      border-radius: 32px;
+
+      img {
+        border-radius: 0;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .like-btn {
+      width: 36px;
+      position: relative;
+      border-radius: 50%;
+
+      p {
+        display: none;
+      }
+
+      svg {
+        font-size: larger;
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        color: $red;
+      }
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .play-list-container {
+    padding: 0 5%;
+  }
+
+  .play-list-container-div {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      height: 289px;
+      object-fit: cover;
+    }
+  }
+
+  .play-list-container-content {
+    gap: 30px;
+
+    div:first-of-type {
+      gap: 10px;
+    }
+
+    div:nth-of-type(2) {
+      flex-wrap: wrap;
+
+      .like-btn {
+        padding: 10px 25px;
+        width: unset;
+        border-radius: 32px;
+
+        svg {
+          position: relative;
+          left: unset;
+          transform: translateX(0);
+        }
+
+        p {
+          display: Block;
+        }
+      }
+    }
+  }
+}

@@ -3,21 +3,26 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 
 const PlayListCard = function ({ song }) {
   return (
-    <div>
-      <div>
-        <img src={song.image} />
-        <AiFillHeart />
+    <div className="play-list-card">
+      <div className="play-list-card-div">
+        <img src={song.image} alt="Playlist__alt" />
+        <AiOutlineHeart />
       </div>
 
-      <p>
-        {song.name} ~ {song.artist}
-      </p>
+      <div>
+        <p>
+          {song.name} ~ {song.artist}
+        </p>
 
-      <p>{song.albumName}</p>
+        <p>{song.albumName}</p>
 
-      <p>{song.duration}</p>
+        <p>{song.duration}</p>
 
-      <BiDotsVerticalRounded />
+        <p>
+          {' '}
+          <BiDotsVerticalRounded />
+        </p>
+      </div>
     </div>
   );
 };
