@@ -1,49 +1,28 @@
 import './Collections.scss';
-import CollectionImage from '../../images/Rectangle 14 (5).png';
 import CollectionCard from './CollectionCard';
+import { useFetchChartQuery } from '../../store';
 
 const CollectionList = function () {
-  const collections = [
-    {
-      songName: 'Limits',
-      image: CollectionImage,
-      artist: 'John Watts',
-      likes: '24m Likes',
-    },
-    {
-      songName: 'Limits',
-      image: CollectionImage,
-      artist: 'John Watts',
-      likes: '24m Likes',
-    },
-    {
-      songName: 'Limits',
-      image: CollectionImage,
-      artist: 'John Watts',
-      likes: '24m Likes',
-    },
-    {
-      songName: 'Limits',
-      image: CollectionImage,
-      artist: 'John Watts',
-      likes: '24m Likes',
-    },
+  const collectionsId = [
+    '7txGsnDSqVMoRl6RQ9XyZP',
+    '4aW4iDepQUl5ZCHd1Gli68',
+    '2BeECcZnwLsaYOndRSO9fF',
+    '7tsXPtLqhab1zWeubbf6JH',
   ];
 
-  const renderedCollection = collections.map((collection, index) => {
-    return <CollectionCard collection={collection} key={index} />;
-  });
+  const { data, isFetching, isError } = useFetchChartQuery(collectionsId);
 
-  return (
-    <div className="collection-list-container">
-      <div className="collection-buttons">
-        <button>My Collection</button>
-        <button>Likes</button>
-      </div>
+  let content;
 
-      <div className="collection-list">{renderedCollection}</div>
-    </div>
-  );
+  if (isFetching) {
+    return;
+  } else if (isError) {
+    return;
+  } else {
+    content = <CollectionCard collections={data.albums} />;
+  }
+
+  return <div className="collection-list">{content}</div>;
 };
 
 export default CollectionList;

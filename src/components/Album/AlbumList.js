@@ -1,139 +1,62 @@
-import PlayListImage from '../../images/Lead-image.svg';
-import SongImage from '../../images/Rectangle 14 (1).png';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import './AlbumListCard.scss';
 import './AlbumList.scss';
 import AlbumListCard from './AlbumListCard';
 import CollectionImage from '../../images/collection.svg';
 import PlayAllImage from '../../images/playall.svg';
+import { useParams } from 'react-router-dom';
+import { useFetchChartQuery } from '../../store';
 
 const AlbumList = function () {
-  const albumList = {
-    image: PlayListImage,
-    name: `Tommorow's Tunes`,
-    description:
-      'lorem ipsum dolor lorem ipsum dolor lorem ipsum dolorlorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
-    songsNo: '64 Songs',
-    songTime: '16hrs+',
-    songs: [
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-      {
-        image: SongImage,
-        name: 'Let me love you',
-        artist: 'Burna',
-        albumName: 'African Giant',
-        duration: '4:17',
-      },
-    ],
-  };
+  const params = useParams();
+  const { data, isFetching, isError } = useFetchChartQuery([params.albumId]);
+  console.log(data);
 
-  const renderedSongs = albumList.songs.map((song, index) => {
-    return <AlbumListCard key={index} song={song} />;
-  });
+  let content;
+  let albumData;
 
-  return (
-    <div className="album-list-container">
-      <div className="album-list-container-div">
-        <img src={albumList.image} alt="albumlist__image_alt" />
+  if (isFetching) {
+    return;
+  } else if (isError) {
+    return;
+  } else {
+    albumData = data.albums[0];
 
-        <div className="album-list-container-content">
-          <div>
-            <h3>{albumList.name}</h3>
-            <p>{albumList.description}</p>
-            <p>
-              {albumList.songTime} ~ {albumList.songsNo}
-            </p>
-          </div>
+    return (
+      <div className="album-list-container">
+        <div className="album-list-container-div">
+          <img src={albumData.images[0].url} alt="albumlist__image_alt" />
 
-          <div>
-            <button>
-              <img src={PlayAllImage} alt="Playall__icon" />
-              Play All
-            </button>
-            <button>
-              <img src={CollectionImage} alt="collection_icon" />
-              Add to collection
-            </button>
-            <button className="like-btn">
-              <AiFillHeart />
-              <p>Like</p>
-            </button>
+          <div className="album-list-container-content">
+            <div>
+              <h3>{albumData.name}</h3>
+              <p>{albumData.label}</p>
+              <p>
+                {albumData.total_tracks} songs ~ {albumData.release_date}
+              </p>
+            </div>
+
+            <div>
+              <button>
+                <img src={PlayAllImage} alt="Playall__icon" />
+                Play All
+              </button>
+              <button>
+                <img src={CollectionImage} alt="collection_icon" />
+                Add to collection
+              </button>
+              <button className="like-btn">
+                <AiFillHeart />
+                <p>Like</p>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="album-list">{renderedSongs}</div>
-    </div>
-  );
+        <AlbumListCard album={albumData} />
+      </div>
+    );
+  }
 };
 
 export default AlbumList;

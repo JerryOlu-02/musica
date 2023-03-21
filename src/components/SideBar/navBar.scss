@@ -36,9 +36,25 @@
       border-radius: 30px;
 
       p {
+        cursor: pointer;
         display: none;
+        transition: color 0.5s ease-in-out;
+
+        &:hover {
+          color: $secondary;
+        }
       }
     }
+  }
+}
+
+.navlink-active {
+  img {
+    fill: $secondary;
+  }
+
+  p {
+    color: $secondary;
   }
 }
 

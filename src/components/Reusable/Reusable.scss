@@ -44,8 +44,17 @@
   color: $light;
 
   img {
+    border-radius: 25px;
     width: 10rem;
     height: 10rem;
+  }
+
+  p {
+    font-size: small;
+  }
+
+  p:last-child {
+    color: $border-color;
   }
 }
 

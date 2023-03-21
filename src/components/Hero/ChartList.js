@@ -1,37 +1,34 @@
 import ChartShow from './ChartShow';
 import Image from '../../images/Rectangle 14 (2).png';
+import { useFetchChartQuery } from '../../store';
 
 const ChartList = function () {
-  const charts = [
-    {
-      img: Image,
-      artist: 'Sean swadder',
-      name: 'Golden age of 80s',
-      time: '2:34:45',
-    },
-    {
-      img: Image,
-      artist: 'DJ YK Mule',
-      name: 'Raggae "n" Blues',
-      time: '2:34:45',
-    },
-    {
-      img: Image,
-      artist: 'Sean swadder',
-      name: 'Golden age of 80s',
-      time: '2:34:45',
-    },
+  const chartsIds = [
+    '0lzPMIAYhhUSD2BPT0VQWI',
+    '71S4BwV5E6Pwwz0ASZB7th',
+    '79ONNoS4M9tfIA1mYLBYVX',
   ];
 
-  const renderedCharts = charts.map((chart, index) => (
-    <ChartShow key={index} chart={chart} />
-  ));
+  const { data, isFetching, isError } = useFetchChartQuery(chartsIds);
+
+  let content;
+
+  if (isFetching) {
+    return;
+  } else if (isError) {
+    return;
+  } else {
+    // console.log(data.albums);
+    content = data.albums.map((chart, index) => (
+      <ChartShow key={chart.id} chart={chart} />
+    ));
+  }
 
   return (
     <div className="chart-list">
       <h3>Top charts</h3>
 
-      <div className="chart-show">{renderedCharts}</div>
+      <div className="chart-show">{content}</div>
     </div>
   );
 };

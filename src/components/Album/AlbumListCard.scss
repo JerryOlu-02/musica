@@ -29,6 +29,7 @@
       font-size: small;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
     }
 
     p:first-of-type {
@@ -54,6 +55,7 @@
   img {
     width: 3rem;
     height: 3rem;
+    border-radius: 8px;
   }
 
   svg {

@@ -1,11 +1,19 @@
 import './Reusable.scss';
+import { Fragment } from 'react';
 
 const Reusable = function ({ header, data }) {
-  const renderedData = data.map((release, index) => {
+  // console.log(data);
+
+  const renderedData = data.map((reusableSongs) => {
+    if (!reusableSongs) return <Fragment key={null}> </Fragment>;
+
     return (
-      <div className="reusable-list-show" key={index}>
-        <img src={release.img} alt="image__alter" />
-        <p>{release.name}</p>
+      <div className="reusable-list-show" key={reusableSongs.id}>
+        <img src={reusableSongs.album.images[0].url} alt="image__alter" />
+        <div>
+          <p>{reusableSongs.name}</p>
+          <p>{reusableSongs.artists[0].name}</p>
+        </div>
       </div>
     );
   });

@@ -1,7 +1,8 @@
 import Header from '../components/Header/Header';
 import NavBar from '../components/SideBar/NavBar';
 import MusicBar from '../components/MusicBar/MusicBar';
-import CollectionList from '../components/Collections/CollectionList';
+import { Outlet } from 'react-router-dom';
+import CollectionsNavigation from '../components/Collections/CollectionsNavigation';
 
 const CollectionPage = function () {
   return (
@@ -10,7 +11,9 @@ const CollectionPage = function () {
 
       <div className="main">
         <NavBar />
-        <CollectionList />
+        <CollectionsNavigation>
+          <Outlet />
+        </CollectionsNavigation>
       </div>
 
       <MusicBar />
