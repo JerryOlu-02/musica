@@ -1,19 +1,14 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addSongLike, removeSongLike } from '../../store';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+import { getMinutes } from '../../helpers/helpers';
 
 const AlbumListCard = function ({ album }) {
   // console.log(album);
   const dispatch = useDispatch();
   const [isLiked, setIsLiked] = useState([]);
-
-  const state = useSelector(({ like }) => {
-    return like;
-  });
-
-  console.log(state);
 
   const handleLike = function (nextIndex, song) {
     setIsLiked((currentLikeIndex) => {
@@ -21,9 +16,13 @@ const AlbumListCard = function ({ album }) {
         ? isLiked.filter((like) => like !== nextIndex)
         : [...isLiked, nextIndex];
     });
+  };
 
-    // NOT YET DONE!!!
-    // FIND METHO TO REMOVE SONG
+  const removeLike = function (song) {
+    dispatch(removeSongLike(song.id));
+  };
+
+  const addLike = function (song) {
     dispatch(addSongLike(song));
   };
 
@@ -35,7 +34,11 @@ const AlbumListCard = function ({ album }) {
         <div className="album-list-card-div">
           <img src={album.images[0].url} alt="albumlist__alt" />
           <div onClick={() => handleLike(index, track)}>
-            {isCurrentlyLiked ? <AiFillHeart /> : <AiOutlineHeart />}
+            {isCurrentlyLiked ? (
+              <AiFillHeart onClick={() => removeLike(track)} />
+            ) : (
+              <AiOutlineHeart onClick={() => addLike(track)} />
+            )}
           </div>
         </div>
 
@@ -46,12 +49,7 @@ const AlbumListCard = function ({ album }) {
 
           <p>{album.name}</p>
 
-          <p>
-            {Math.round(track.duration_ms / 60000)} :{' '}
-            {Math.round(track.duration_ms / 1000) % 60 < 10
-              ? `0${Math.round((track.duration_ms / 1000) % 60)}`
-              : Math.round(track.duration_ms / 1000) % 60}
-          </p>
+          <p>{getMinutes(track.duration_ms)}</p>
 
           <p>
             {' '}

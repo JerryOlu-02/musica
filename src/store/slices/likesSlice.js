@@ -20,7 +20,7 @@ const likesSlice = createSlice({
     },
 
     removeCollectionLike(state, action) {
-      // Assuption: action.payload === collectionIdd
+      // Assuption: action.payload === collectionId
       const newCollectionLike = state.collections.filter((collection) => {
         return collection.id !== action.payload;
       });
@@ -29,28 +29,13 @@ const likesSlice = createSlice({
     },
 
     removeSongLike(state, action) {
-      // Assuption: action.payload === collectionIdd
+      // Assuption: action.payload === songId
       const newSongLike = state.songs.filter((song) => {
         return song.id !== action.payload;
       });
 
       state.songs = newSongLike;
     },
-  },
-
-  // DELETE THIS, FIND METHOD TO REMOVE SONGS DATA
-  extraReducers(builder) {
-    builder.addCase(addSongLike, (state, action) => {
-      // Assuption: action.payLoad === songObject which includes and id key
-      const filterdSongs = state.songs.filter(
-        (song) => song.id !== action.payload.id
-      );
-
-      return {
-        collections: [...state.collections],
-        songs: [...filterdSongs],
-      };
-    });
   },
 });
 

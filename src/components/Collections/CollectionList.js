@@ -1,28 +1,17 @@
 import './Collections.scss';
 import CollectionCard from './CollectionCard';
-import { useFetchChartQuery } from '../../store';
 
 const CollectionList = function () {
-  const collectionsId = [
-    '7txGsnDSqVMoRl6RQ9XyZP',
-    '4aW4iDepQUl5ZCHd1Gli68',
-    '2BeECcZnwLsaYOndRSO9fF',
-    '7tsXPtLqhab1zWeubbf6JH',
-  ];
+  // const data = useRouteLoaderData('collection-loader');
 
-  const { data, isFetching, isError } = useFetchChartQuery(collectionsId);
+  // const dispatch = useDispatch();
 
-  let content;
+  // if (data.albums.length > 1) {
+  //   dispatch(addCollection(...data.albums));
+  // }
 
-  if (isFetching) {
-    return;
-  } else if (isError) {
-    return;
-  } else {
-    content = <CollectionCard collections={data.albums} />;
-  }
-
-  return <div className="collection-list">{content}</div>;
+  return <CollectionCard />;
 };
 
 export default CollectionList;
+

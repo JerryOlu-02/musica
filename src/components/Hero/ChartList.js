@@ -1,5 +1,4 @@
 import ChartShow from './ChartShow';
-import Image from '../../images/Rectangle 14 (2).png';
 import { useFetchChartQuery } from '../../store';
 
 const ChartList = function () {
@@ -19,9 +18,7 @@ const ChartList = function () {
     return;
   } else {
     // console.log(data.albums);
-    content = data.albums.map((chart, index) => (
-      <ChartShow key={chart.id} chart={chart} />
-    ));
+    content = data.map((chart) => <ChartShow key={chart.id} chart={chart} />);
   }
 
   return (

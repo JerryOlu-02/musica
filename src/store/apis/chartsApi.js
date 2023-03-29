@@ -24,6 +24,7 @@ export const chartsApi = createApi({
             method: 'GET',
           };
         },
+        transformResponse: (response) => response.albums,
       }),
 
       fetchSongsReusable: builder.query({
