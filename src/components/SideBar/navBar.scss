@@ -35,6 +35,24 @@
       padding: 30px 0;
       border-radius: 30px;
 
+      .navlink-active {
+        :first-child {
+          fill: $secondary;
+          opacity: 1;
+          fill-opacity: 1;
+
+          * {
+            fill: $secondary;
+            opacity: 1;
+            fill-opacity: 1;
+          }
+        }
+
+        p {
+          color: $secondary;
+        }
+      }
+
       p {
         cursor: pointer;
         display: none;
@@ -45,16 +63,6 @@
         }
       }
     }
-  }
-}
-
-.navlink-active {
-  img {
-    fill: $secondary;
-  }
-
-  p {
-    color: $secondary;
   }
 }
 

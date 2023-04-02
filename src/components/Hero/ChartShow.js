@@ -17,7 +17,7 @@ const ChartShow = function ({ chart }) {
     if (isLiked) {
       dispatch(addCollectionLike(chart));
     } else {
-      dispatch(removeCollectionLike(chart.id));
+      dispatch(removeCollectionLike(chart));
     }
   }, [isLiked, dispatch, chart]);
 

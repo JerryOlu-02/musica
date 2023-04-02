@@ -4,8 +4,6 @@ const collectionSlice = createSlice({
   name: 'collection',
 
   initialState: {
-    loading: false,
-    error: null,
     data: [],
   },
 
@@ -19,7 +17,7 @@ const collectionSlice = createSlice({
         (collection) => collection.id !== action.payload.id
       );
 
-      return [...filteredCollections];
+      state.data = filteredCollections;
     },
   },
 });

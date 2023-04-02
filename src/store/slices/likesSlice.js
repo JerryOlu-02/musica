@@ -20,9 +20,9 @@ const likesSlice = createSlice({
     },
 
     removeCollectionLike(state, action) {
-      // Assuption: action.payload === collectionId
+      // Assuption: action.payload === collection
       const newCollectionLike = state.collections.filter((collection) => {
-        return collection.id !== action.payload;
+        return collection.id !== action.payload.id;
       });
 
       state.collections = newCollectionLike;

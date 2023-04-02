@@ -9,6 +9,7 @@ const LikesList = function () {
   });
 
   const likesArr = likes.flat();
+  console.log(likesArr);
 
   let content;
 

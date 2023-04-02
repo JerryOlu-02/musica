@@ -4,19 +4,13 @@ import { addSongLike, removeSongLike } from '../../store';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { getMinutes } from '../../helpers/helpers';
+import { useLike } from '../../hooks/use-like';
 
 const AlbumListCard = function ({ album }) {
   // console.log(album);
   const dispatch = useDispatch();
-  const [isLiked, setIsLiked] = useState([]);
 
-  const handleLike = function (nextIndex, song) {
-    setIsLiked((currentLikeIndex) => {
-      return currentLikeIndex.includes(nextIndex)
-        ? isLiked.filter((like) => like !== nextIndex)
-        : [...isLiked, nextIndex];
-    });
-  };
+  const [isLiked, handleLike] = useLike();
 
   const removeLike = function (song) {
     dispatch(removeSongLike(song.id));
@@ -33,7 +27,7 @@ const AlbumListCard = function ({ album }) {
       <div key={track.id} className="album-list-card">
         <div className="album-list-card-div">
           <img src={album.images[0].url} alt="albumlist__alt" />
-          <div onClick={() => handleLike(index, track)}>
+          <div onClick={() => handleLike(index)}>
             {isCurrentlyLiked ? (
               <AiFillHeart onClick={() => removeLike(track)} />
             ) : (

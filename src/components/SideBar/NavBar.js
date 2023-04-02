@@ -1,10 +1,10 @@
 import './navBar.scss';
-import Home from '../../images/Home.svg';
-import playlist from '../../images/playlist.svg';
-import radio from '../../images/radio.svg';
-import videos from '../../images/videos.svg';
-import profile from '../../images/profile.svg';
-import logout from '../../images/Logout.svg';
+import { ReactComponent as Home } from '../../images/Home.svg';
+import { ReactComponent as PlayList } from '../../images/playlist.svg';
+import { ReactComponent as Radio } from '../../images/radio.svg';
+import { ReactComponent as Videos } from '../../images/videos.svg';
+import { ReactComponent as Profile } from '../../images/profile.svg';
+import { ReactComponent as Logout } from '../../images/Logout.svg';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -34,35 +34,35 @@ const NavBar = function () {
       <div onClick={hideNavbar} className={navShowClass}>
         <div className="navbar-div">
           <NavLink
-            className={({ isActive }) => (isActive ? 'navlink-active' : null)}
+            className={({ isActive }) => (isActive ? 'navlink-active' : '')}
             to="/"
             end
           >
-            <img src={Home} alt="home__img" />
+            <Home />
             <p>Home</p>
           </NavLink>
 
           <NavLink
             to="/collections"
-            className={({ isActive }) => (isActive ? 'navlink-active' : null)}
+            className={({ isActive }) => (isActive ? 'navlink-active' : '')}
           >
-            <img src={playlist} alt="playlist__img" />
+            <PlayList />
             <p>My collections</p>
           </NavLink>
 
           <NavLink
             to="/radio"
-            className={({ isActive }) => (isActive ? 'navlink-active' : null)}
+            className={({ isActive }) => (isActive ? 'navlink-active' : '')}
           >
-            <img src={radio} alt="radio__img" />
+            <Radio />
             <p>Radio</p>
           </NavLink>
 
           <NavLink
             to="videos"
-            className={({ isActive }) => (isActive ? 'navlink-active' : null)}
+            className={({ isActive }) => (isActive ? 'navlink-active' : '')}
           >
-            <img src={videos} alt="logout__img" />
+            <Videos />
             <p>Music videos</p>
           </NavLink>
         </div>
@@ -70,17 +70,17 @@ const NavBar = function () {
         <div className="navbar-div">
           <NavLink
             to="/profile"
-            className={({ isActive }) => (isActive ? 'navlink-active' : null)}
+            className={({ isActive }) => (isActive ? 'navlink-active' : '')}
           >
-            <img src={profile} alt="profile__logo" />
+            <Profile />
             <p>Profile</p>
           </NavLink>
 
           <NavLink
             to="/logout"
-            className={({ isActive }) => (isActive ? 'navlink-active' : null)}
+            className={({ isActive }) => (isActive ? 'navlink-active' : '')}
           >
-            <img src={logout} alt="logout__logo" />
+            <Logout />
             <p>Log out</p>
           </NavLink>
         </div>
